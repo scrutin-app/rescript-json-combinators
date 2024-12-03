@@ -54,7 +54,7 @@ let tuple3 = (encodeA, encodeB, encodeC) => ((a, b, c)) =>
 let tuple4 = (encodeA, encodeB, encodeC, encodeD) => ((a, b, c, d)) =>
   [a->encodeA, b->encodeB, c->encodeC, d->encodeD]->jsonArray
 
-let dict = encode => dict => Js.Dict.map(v => encode(v), dict)->jsonDict
+let dict = encode => dict => Js.Dict.map((. v) => encode(v), dict)->jsonDict
 
 module Unsafe = {
   external object: {..} => Js.Json.t = "%identity"
